@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayyapa Real Estate | Plots & Lands</title>
+<meta name="description" content="Ayyapa Real Estate - Premium plots and land opportunities across selected locations.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{
+  --green:#073d2b;--green2:#12684b;--gold:#d8a83e;--gold2:#f4d47d;
+  --cream:#fffaf0;--light:#f3f8f4;--dark:#101713;--muted:#68746d;
+  --white:#fff;--line:#e3e9e4
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;color:var(--dark);background:#fff;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,select{font:inherit}
+.header{position:fixed;top:0;left:0;right:0;height:78px;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(255,255,255,.95);backdrop-filter:blur(18px);border-bottom:1px solid #eee}
+.logo{display:flex;align-items:center;gap:11px}
+.logo-mark{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;display:grid;place-items:center;font-weight:800;box-shadow:0 8px 25px rgba(7,61,43,.2)}
+.logo-name{font-size:18px;font-weight:800;color:var(--green);letter-spacing:.4px}
+.logo-name span{color:var(--gold)}
+.nav{display:flex;align-items:center;gap:27px}
+.nav a{font-size:14px;font-weight:700;color:#303631}
+.nav a:hover{color:var(--gold)}
+.nav-call{background:var(--green);color:#fff!important;padding:12px 18px;border-radius:8px}
+
+.hero{min-height:790px;padding:150px 6% 110px;display:flex;align-items:center;color:#fff;position:relative;background:linear-gradient(90deg,rgba(3,29,19,.92),rgba(5,61,41,.68),rgba(5,45,31,.20)),url("taramatipet-plot.jpeg") center/cover no-repeat}
+.hero-content{max-width:800px}
+.hero-tag{display:inline-block;padding:9px 15px;border:1px solid rgba(255,255,255,.38);background:rgba(255,255,255,.10);border-radius:50px;font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:24px}
+.hero h1{font-family:"Playfair Display",serif;font-size:clamp(48px,7vw,86px);line-height:1.02;margin-bottom:24px}
+.hero h1 span{color:var(--gold2)}
+.hero p{max-width:650px;font-size:18px;line-height:1.8;color:#eaf0ec;margin-bottom:32px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 24px;border-radius:8px;font-size:14px;font-weight:800;border:0;cursor:pointer;transition:.25s}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 10px 30px rgba(216,168,62,.25)}
+.btn-gold:hover{transform:translateY(-2px);background:#bc8e2d}
+.btn-light{background:rgba(255,255,255,.10);color:#fff;border:1px solid rgba(255,255,255,.55)}
+.btn-light:hover{background:#fff;color:var(--green)}
+
+.search-wrap{position:relative;margin:-62px auto 0;width:88%;max-width:1180px;z-index:10}
+.search-panel{background:#fff;border:1px solid var(--line);border-radius:17px;padding:25px;box-shadow:0 20px 60px rgba(0,0,0,.13)}
+.search-panel h3{font-size:21px;color:var(--green)}
+.search-panel p{font-size:13px;color:var(--muted);margin-top:3px}
+.search-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr auto;gap:12px;margin-top:20px}
+.field{border:1px solid var(--line);border-radius:8px;padding:11px 14px}
+.field label{display:block;font-size:10px;font-weight:800;color:var(--muted);letter-spacing:.8px;margin-bottom:5px}
+.field select{width:100%;border:0;outline:0;background:#fff;font-size:14px}
+
+section{padding:100px 6%}
+.section-label{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--gold);margin-bottom:10px}
+.section-title{font-family:"Playfair Display",serif;color:var(--green);font-size:45px;line-height:1.12}
+.section-desc{color:var(--muted);line-height:1.8;max-width:620px;margin-top:12px}
+
+.properties{scroll-margin-top:85px}
+.property-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:42px}
+.property-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:25px}
+.property-card{background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.05);transition:.3s}
+.property-card:hover{transform:translateY(-6px);box-shadow:0 20px 45px rgba(0,0,0,.11)}
+.gallery{height:330px;position:relative;background:#eee;overflow:hidden}
+.gallery img{width:100%;height:100%;object-fit:cover;display:none}
+.gallery img.active{display:block}
+.badge{position:absolute;top:16px;left:16px;background:var(--green);color:#fff;padding:7px 12px;border-radius:30px;font-size:10px;font-weight:800;letter-spacing:.5px;z-index:2}
+.gallery-nav{position:absolute;left:15px;right:15px;bottom:15px;display:flex;justify-content:space-between;align-items:center}
+.gallery-buttons{display:flex;gap:7px}
+.gallery-btn{width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.94);cursor:pointer;font-size:22px}
+.gallery-count{background:rgba(0,0,0,.55);color:#fff;border-radius:20px;padding:7px 11px;font-size:12px}
+.property-body{padding:23px}
+.property-body h3{font-size:21px;color:var(--green);margin-bottom:7px}
+.location{color:var(--muted);font-size:13px;margin-bottom:15px}
+.info{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.pill{background:#f4f7f4;color:#4f5953;padding:8px 10px;border-radius:7px;font-size:12px}
+.property-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:18px}
+.price{font-weight:800;color:var(--green);font-size:18px}
+.small-btn{border:0;border-radius:7px;padding:10px 14px;background:#edf4ee;color:var(--green);font-weight:800;cursor:pointer}
+
+.locations{background:linear-gradient(135deg,#fffaf0,#f1f8f3)}
+.locations-head{text-align:center;margin-bottom:42px}
+.locations-head .section-desc{margin-left:auto;margin-right:auto}
+.location-grid{max-width:1120px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.location-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;align-items:center;gap:9px;cursor:pointer;transition:.2s}
+.location-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,.06)}
+.pin{width:34px;height:34px;border-radius:50%;background:#edf5ef;display:grid;place-items:center}
+.location-name{font-size:13px;font-weight:700;color:var(--green)}
+
+.stats{padding:65px 6%;background:var(--green);color:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+.stat{border-right:1px solid rgba(255,255,255,.14)}
+.stat:last-child{border:0}
+.stat strong{display:block;color:var(--gold2);font-size:35px}
+.stat span{font-size:13px;color:#ced8d2}
+
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:42px}
+.why-card{background:#fbfcfa;border:1px solid var(--line);border-radius:13px;padding:28px;transition:.25s}
+.why-card:hover{background:#fff;transform:translateY(-4px);box-shadow:0 15px 35px rgba(0,0,0,.07)}
+.why-icon{font-size:30px;margin-bottom:16px}
+.why-card h3{color:var(--green);margin-bottom:8px}
+.why-card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+.about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-image{height:500px;border-radius:17px;overflow:hidden}
+.about-image img{width:100%;height:100%;object-fit:cover}
+.about-copy h2{font-family:"Playfair Display",serif;color:var(--green);font-size:46px;line-height:1.15;margin-bottom:20px}
+.about-copy p{color:var(--muted);line-height:1.8;margin-bottom:17px}
+
+.contact{background:linear-gradient(135deg,var(--green),var(--green2));text-align:center;color:#fff}
+.contact h2{font-family:"Playfair Display",serif;font-size:50px;margin-bottom:14px}
+.contact>p{max-width:650px;margin:0 auto 28px;color:#d8e3dc;line-height:1.7}
+.contact-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.contact-btn{padding:14px 21px;border-radius:8px;background:#fff;color:var(--green);font-weight:800}
+.contact-btn.gold{background:var(--gold);color:#fff}
+
+footer{background:#071e15;color:#fff;padding:52px 6% 25px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:55px;padding-bottom:35px;border-bottom:1px solid rgba(255,255,255,.12)}
+.footer-brand p{color:#a6b5ac;max-width:370px;margin-top:15px;line-height:1.7;font-size:14px}
+.footer-col h4{margin-bottom:15px}
+.footer-col a{display:block;color:#aebbb4;font-size:14px;margin-bottom:10px}
+.footer-col a:hover{color:var(--gold2)}
+.copyright{text-align:center;color:#809088;font-size:12px;padding-top:24px}
+.whatsapp{position:fixed;right:20px;bottom:20px;width:60px;height:60px;border-radius:50%;z-index:999;background:#25D366;color:#fff;display:grid;place-items:center;font-size:26px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#101714;color:#fff;padding:13px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:.25s;z-index:2000;font-size:13px}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:950px){
+  .nav{display:none}.search-grid{grid-template-columns:1fr 1fr}.property-grid{grid-template-columns:1fr}
+  .location-grid{grid-template-columns:repeat(3,1fr)}.why-grid{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .header{height:70px;padding:0 5%}.logo-name{font-size:15px}
+  .hero{min-height:700px;padding:120px 6% 80px}.hero h1{font-size:49px}.hero p{font-size:15px}
+  .actions{flex-direction:column;align-items:stretch}.search-wrap{width:92%}.search-grid{grid-template-columns:1fr}
+  section{padding:70px 6%}.section-title{font-size:36px}.property-head{display:block}.gallery{height:260px}
+  .location-grid{grid-template-columns:1fr 1fr}.stats-grid{grid-template-columns:1fr 1fr;gap:25px}.stat{border:0}
+  .why-grid{grid-template-columns:1fr}.about-image{height:350px}.about-copy h2{font-size:38px}.contact h2{font-size:38px}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+<header class="header">
+  <a class="logo" href="#home">
+    <div class="logo-mark">AR</div>
+    <div class="logo-name">AYYAPA <span>REAL ESTATE</span></div>
+  </a>
+  <nav class="nav">
+    <a href="#home">Home</a><a href="#properties">Properties</a><a href="#locations">Locations</a>
+    <a href="#about">About</a><a href="#contact">Contact</a>
+    <a class="nav-call" href="tel:9391053400">📞 Call Us</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-tag">AYYAPA REAL ESTATE</div>
+    <h1>Find Your Land.<br><span>Build Your Future.</span></h1>
+    <p>Discover residential plots and land opportunities in selected locations. Explore a property and connect directly with Ayyapa Real Estate.</p>
+    <div class="actions">
+      <a class="btn btn-gold" href="#properties">Explore Properties →</a>
+      <a class="btn btn-light" href="tel:9391053400">📞 Talk To Us</a>
+    </div>
+  </div>
+</section>
+
+<div class="search-wrap">
+  <div class="search-panel">
+    <h3>Find Your Ideal Property</h3>
+    <p>Select a location, category or budget.</p>
+    <div class="search-grid">
+      <div class="field"><label>Location</label>
+        <select id="locationFilter">
+          <option value="">All Locations</option>
+          <option>Bacharam</option><option>Taramatipet</option><option>Pasumamula</option><option>Bandaraviryala</option>
+          <option>Gowrelly</option><option>Abdullapurmet</option><option>Batasingaram</option><option>Inamguda</option>
+          <option>Piglipur</option><option>Pedda Amberpet</option><option>Kawadipally</option><option>Gunthapally</option>
+          <option>Deshmukhi</option><option>Ibrahimpatnam Janaharsha</option><option>Koheda</option><option>Pochampally</option>
+        </select>
+      </div>
+      <div class="field"><label>Category</label>
+        <select id="typeFilter"><option value="">All Categories</option><option>Residential Plot</option><option>Commercial Plot</option><option>Land</option></select>
+      </div>
+      <div class="field"><label>Budget</label>
+        <select id="budgetFilter"><option value="">Any Budget</option><option>Under ₹25 Lakhs</option><option>₹25L - ₹50L</option><option>₹50L - ₹1Cr</option><option>₹1Cr+</option></select>
+      </div>
+      <button class="btn btn-gold" onclick="searchProperties()">🔍 Search</button>
+    </div>
+  </div>
+</div>
+
+<section class="properties" id="properties">
+  <div class="property-head">
+    <div><div class="section-label">FEATURED LISTINGS</div><h2 class="section-title">Premium Plot Opportunities</h2></div>
+    <p class="section-desc">Explore the currently added properties below. Prices can be added once confirmed.</p>
+  </div>
+
+  <div class="property-grid">
+
+    <!-- TARMAATIPET -->
+    <article class="property-card">
+      <div class="gallery" data-gallery="taramatipet">
+        <span class="badge">FEATURED</span>
+        <img src="taramatipet-plot.jpeg" class="active" alt="Taramatipet plot">
+        <div class="gallery-nav">
+          <div class="gallery-count">1 / 1</div>
+        </div>
+      </div>
+      <div class="property-body">
+        <h3>Ready-to-Construct Plot</h3>
+        <div class="location">📍 Taramatipet</div>
+        <div class="info">
+          <span class="pill">📐 133 sq. yd.</span>
+          <span class="pill">🧭 West Facing</span>
+          <span class="pill">🛣️ 33 Feet Road</span>
+          <span class="pill">🏗️ Ready for Construction</span>
+        </div>
+        <div class="property-bottom">
+          <div class="price">Price on Request</div>
+          <a class="small-btn" href="tel:9391053400">📞 Enquire</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- BANDARAVIRYALA -->
+    <article class="property-card">
+      <div class="gallery" data-gallery="bandaraviryala">
+        <span class="badge">FEATURED</span>
+        <img src="bandaraviryala-plot.jpeg" class="active" alt="Bandaraviryala plot">
+        <div class="gallery-nav">
+          <div class="gallery-count">1 / 1</div>
+        </div>
+      </div>
+      <div class="property-body">
+        <h3>West-Facing Residential Plot</h3>
+        <div class="location">📍 Bandaraviryala</div>
+        <div class="info">
+          <span class="pill">📐 200 sq. yd.</span>
+          <span class="pill">🧭 West Facing</span>
+          <span class="pill">🛣️ 30 Feet Road</span>
+        </div>
+        <div class="property-bottom">
+          <div class="price">Price on Request</div>
+          <a class="small-btn" href="tel:9391053400">📞 Enquire</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- THIRD PHOTO -->
+    <article class="property-card">
+      <div class="gallery">
+        <span class="badge">UPCOMING</span>
+        <img src="plot-3.jpeg" class="active" alt="Upcoming Ayyapa Real Estate plot">
+      </div>
+      <div class="property-body">
+        <h3>Upcoming Property</h3>
+        <div class="location">📍 Location details coming soon</div>
+        <div class="info">
+          <span class="pill">📐 Size: Add details</span>
+          <span class="pill">🧭 Facing: Add details</span>
+          <span class="pill">🛣️ Road: Add details</span>
+        </div>
+        <div class="property-bottom">
+          <div class="price">Enquire</div>
+          <a class="small-btn" href="tel:9391053400">📞 Call</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="locations" id="locations">
+  <div class="locations-head">
+    <div class="section-label">LOCATIONS</div>
+    <h2 class="section-title">Explore Our Locations</h2>
+    <p class="section-desc">Choose a location to set the property search filter.</p>
+  </div>
+  <div class="location-grid">
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Bacharam</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Taramatipet</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Pasumamula</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Bandaraviryala</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Gowrelly</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Abdullapurmet</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Batasingaram</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Inamguda</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Piglipur</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Pedda Amberpet</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Kawadipally</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Gunthapally</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Deshmukhi</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Ibrahimpatnam Janaharsha</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Koheda</div></div>
+    <div class="location-card"><div class="pin">📍</div><div class="location-name">Pochampally</div></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat"><strong>16</strong><span>Locations</span></div>
+    <div class="stat"><strong>2</strong><span>Featured Plots</span></div>
+    <div class="stat"><strong>133+</strong><span>Sq. Yd. Listing</span></div>
+    <div class="stat"><strong>24/7</strong><span>Direct Enquiries</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">WHY AYYAPA</div>
+  <h2 class="section-title">A Better Property Experience</h2>
+  <p class="section-desc">A clean and professional way to discover plots and connect directly with Ayyapa Real Estate.</p>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon">📍</div><h3>Prime Locations</h3><p>Browse property opportunities across selected locations.</p></div>
+    <div class="why-card"><div class="why-icon">📋</div><h3>Clear Details</h3><p>See plot size, facing and road width clearly on each listing.</p></div>
+    <div class="why-card"><div class="why-icon">🤝</div><h3>Personal Assistance</h3><p>Speak directly with our team about property enquiries.</p></div>
+    <div class="why-card"><div class="why-icon">📞</div><h3>Easy Contact</h3><p>Call, WhatsApp or email without complicated forms.</p></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-image"><img src="bandaraviryala-plot.jpeg" alt="Ayyapa Real Estate property"></div>
+    <div class="about-copy">
+      <div class="section-label">ABOUT AYYAPA REAL ESTATE</div>
+      <h2>Find your land. Build your future.</h2>
+      <p>Ayyapa Real Estate is building a professional platform for discovering plots and land opportunities.</p>
+      <p>Property photos, locations and verified details can be brought together in one simple experience.</p>
+      <a class="btn btn-gold" href="tel:9391053400">📞 Talk To Ayyapa</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-label" style="color:var(--gold2)">GET IN TOUCH</div>
+  <h2>Let's Find Your Next Property.</h2>
+  <p>Want details about Taramatipet, Bandaraviryala or another location? Contact Ayyapa Real Estate directly.</p>
+  <div class="contact-actions">
+    <a class="contact-btn gold" href="tel:9391053400">📞 Call 9391053400</a>
+    <a class="contact-btn" href="mailto:shekargoud0423@gmail.com">📧 Email Us</a>
+    <a class="contact-btn" target="_blank" href="https://wa.me/919391053400?text=Hi%20Ayyapa%20Real%20Estate,%20I%20want%20property%20details.">💬 WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo"><div class="logo-mark">AR</div><div class="logo-name" style="color:#fff">AYYAPA <span>REAL ESTATE</span></div></div>
+      <p>Find Your Land. Build Your Future.</p>
+    </div>
+    <div class="footer-col"><h4>Explore</h4><a href="#home">Home</a><a href="#properties">Properties</a><a href="#locations">Locations</a><a href="#about">About</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:9391053400">📞 9391053400</a><a href="mailto:shekargoud0423@gmail.com">📧 Email</a><a target="_blank" href="https://wa.me/919391053400">💬 WhatsApp</a></div>
+  </div>
+  <div class="copyright">© 2026 Ayyapa Real Estate. All Rights Reserved.</div>
+</footer>
+
+<a class="whatsapp" target="_blank" href="https://wa.me/919391053400?text=Hi%20Ayyapa%20Real%20Estate,%20I%20want%20property%20details." aria-label="WhatsApp">💬</a>
+<div class="toast" id="toast"></div>
+
+<script>
+function showToast(message){
+  const t=document.getElementById("toast");
+  t.textContent=message;t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2300);
+}
+function searchProperties(){
+  const l=document.getElementById("locationFilter").value;
+  const c=document.getElementById("typeFilter").value;
+  const b=document.getElementById("budgetFilter").value;
+  let p=[];if(l)p.push("Location: "+l);if(c)p.push("Category: "+c);if(b)p.push("Budget: "+b);
+  showToast(p.length?p.join(" • "):"Showing available properties");
+  document.getElementById("properties").scrollIntoView({behavior:"smooth"});
+}
+document.querySelectorAll(".location-card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    const n=card.querySelector(".location-name").textContent;
+    document.getElementById("locationFilter").value=n;
+    document.getElementById("properties").scrollIntoView({behavior:"smooth"});
+    showToast(n+" selected");
+  });
+});
+</script>
+</body>
+</html>
